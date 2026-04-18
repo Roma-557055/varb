@@ -23,7 +23,7 @@
     constitution: "data/constitution.json"
   };
 
-  const ADMIN_ACCESS_HASH = "NzJ3Y3NqMjU4NA==";
+  const ADMIN_ACCESS_HASH = "NDg1MmpzY3c3Mg==";
 
   const showToast = (message) => {
     if (!toastElement) return;
@@ -502,7 +502,7 @@
     const workspace = document.querySelector("[data-admin-workspace]");
     const accessForm = document.querySelector("[data-admin-access-form]");
     const accessInput = document.querySelector("[data-admin-access-input]");
-    const encodedTarget = window.atob(ADMIN_ACCESS_HASH).split("").reverse().join("");
+    const encodedTarget = window.atob(ADMIN_ACCESS_HASH);
 
     if (lockPanel && workspace) {
       workspace.classList.add("is-hidden");
