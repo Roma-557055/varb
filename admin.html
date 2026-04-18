@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Офлайн-админка для редактирования JSON-файлов Minecraft сервера.">
+  <title>Admin UI | Minecraft Server</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="admin">
+  <div class="page-shell admin-shell">
+    <main class="admin-main">
+      <div class="container">
+        <section class="admin-header glass-card reveal">
+          <div>
+            <p class="eyebrow">Локальное управление</p>
+            <h1>Админ-панель</h1>
+            <p>
+              Эта панель работает только с JSON-файлами из папки <code>/data/</code>. Никакой отправки
+              данных и никаких серверных запросов: редактируете JSON, копируете или скачиваете файл
+              и загружаете его в GitHub вручную.
+            </p>
+          </div>
+          <a class="button button-secondary" href="index.html">Вернуться на сайт</a>
+        </section>
+
+        <section class="glass-card admin-lock reveal" data-admin-lock>
+          <div class="admin-lock-copy">
+            <p class="eyebrow">Защита доступа</p>
+            <h2>Введите код для входа</h2>
+            <p>
+              Панель скрыта простым клиентским кодом доступа. Для статического сайта это только базовая
+              защита интерфейса, а не полноценное безопасное шифрование.
+            </p>
+          </div>
+          <form class="admin-form admin-access-form" data-admin-access-form>
+            <label>
+              Код доступа
+              <input type="password" name="accessCode" placeholder="Введите код" autocomplete="current-password" data-admin-access-input>
+            </label>
+            <div class="admin-actions">
+              <button class="button button-primary" type="submit">Открыть панель</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="admin-layout is-hidden" data-admin-workspace>
+          <aside class="admin-sidebar glass-card reveal">
+            <h2>JSON-файлы</h2>
+            <nav class="admin-nav">
+              <a href="#admin-news">Новости</a>
+              <a href="#admin-banners">Баннеры</a>
+              <a href="#admin-events">Ивенты</a>
+              <a href="#admin-creators">Контент-мейкеры</a>
+              <a href="#admin-mods">Моды</a>
+              <a href="#admin-rules">Правила</a>
+              <a href="#admin-constitution">Конституция</a>
+            </nav>
+            <div class="admin-note">
+              <strong>Как работать:</strong>
+              <p>Откройте нужный раздел, отредактируйте JSON, проверьте предпросмотр, затем нажмите <code>Скопировать JSON</code> или <code>Скачать JSON</code>.</p>
+            </div>
+          </aside>
+
+          <div class="admin-content">
+            <section class="glass-card admin-section reveal" id="admin-news" data-json-editor-section="news">
+              <div class="admin-section-head">
+                <div>
+                  <p class="eyebrow">Файл</p>
+                  <h2>news.json</h2>
+                </div>
+                <span class="meta-chip" data-json-status>Загрузка</span>
+              </div>
+              <div class="admin-grid">
+                <div class="admin-editor-pane">
+                  <textarea class="admin-json-textarea" rows="18" spellcheck="false" data-json-editor></textarea>
+                  <div class="admin-actions">
+                    <button class="button button-primary" type="button" data-copy-json>Скопировать JSON</button>
+                    <button class="button button-secondary" type="button" data-download-json>Скачать JSON</button>
+                    <button class="button button-secondary" type="button" data-reset-json>Сбросить</button>
+                  </div>
+                </div>
+                <div class="admin-preview-grid" data-admin-preview></div>
+              </div>
+            </section>
+
+            <section class="glass-card admin-section reveal" id="admin-banners" data-json-editor-section="banners">
+              <div class="admin-section-head">
+                <div>
+                  <p class="eyebrow">Файл</p>
+                  <h2>banners.json</h2>
+                </div>
+                <span class="meta-chip" data-json-status>Загрузка</span>
+              </div>
+              <div class="admin-grid">
+                <div class="admin-editor-pane">
+                  <textarea class="admin-json-textarea" rows="18" spellcheck="false" data-json-editor></textarea>
+                  <div class="admin-actions">
+                    <button class="button button-primary" type="button" data-copy-json>Скопировать JSON</button>
+                    <button class="button button-secondary" type="button" data-download-json>Скачать JSON</button>
+                    <button class="button button-secondary" type="button" data-reset-json>Сбросить</button>
+                  </div>
+                </div>
+                <div class="admin-preview-grid" data-admin-preview></div>
+              </div>
+            </section>
+
+            <section class="glass-card admin-section reveal" id="admin-events" data-json-editor-section="events">
+              <div class="admin-section-head">
+                <div>
+                  <p class="eyebrow">Файл</p>
+                  <h2>events.json</h2>
+                </div>
+                <span class="meta-chip" data-json-status>Загрузка</span>
+              </div>
+              <div class="admin-grid">
+                <div class="admin-editor-pane">
+                  <textarea class="admin-json-textarea" rows="18" spellcheck="false" data-json-editor></textarea>
+                  <div class="admin-actions">
+                    <button class="button button-primary" type="button" data-copy-json>Скопировать JSON</button>
+                    <button class="button button-secondary" type="button" data-download-json>Скачать JSON</button>
+                    <button class="button button-secondary" type="button" data-reset-json>Сбросить</button>
+                  </div>
+                </div>
+                <div class="admin-preview-grid" data-admin-preview></div>
+              </div>
+            </section>
+
+            <section class="glass-card admin-section reveal" id="admin-creators" data-json-editor-section="creators">
+              <div class="admin-section-head">
+                <div>
+                  <p class="eyebrow">Файл</p>
+                  <h2>creators.json</h2>
+                </div>
+                <span class="meta-chip" data-json-status>Загрузка</span>
+              </div>
+              <div class="admin-grid">
+                <div class="admin-editor-pane">
+                  <textarea class="admin-json-textarea" rows="18" spellcheck="false" data-json-editor></textarea>
+                  <div class="admin-actions">
+                    <button class="button button-primary" type="button" data-copy-json>Скопировать JSON</button>
+                    <button class="button button-secondary" type="button" data-download-json>Скачать JSON</button>
+                    <button class="button button-secondary" type="button" data-reset-json>Сбросить</button>
+                  </div>
+                </div>
+                <div class="admin-preview-grid" data-admin-preview></div>
+              </div>
+            </section>
+
+            <section class="glass-card admin-section reveal" id="admin-mods" data-json-editor-section="mods">
+              <div class="admin-section-head">
+                <div>
+                  <p class="eyebrow">Файл</p>
+                  <h2>mods.json</h2>
+                </div>
+                <span class="meta-chip" data-json-status>Загрузка</span>
+              </div>
+              <div class="admin-grid">
+                <div class="admin-editor-pane">
+                  <textarea class="admin-json-textarea" rows="18" spellcheck="false" data-json-editor></textarea>
+                  <div class="admin-actions">
+                    <button class="button button-primary" type="button" data-copy-json>Скопировать JSON</button>
+                    <button class="button button-secondary" type="button" data-download-json>Скачать JSON</button>
+                    <button class="button button-secondary" type="button" data-reset-json>Сбросить</button>
+                  </div>
+                </div>
+                <div class="admin-preview-grid" data-admin-preview></div>
+              </div>
+            </section>
+
+            <section class="glass-card admin-section reveal" id="admin-rules" data-json-editor-section="rules">
+              <div class="admin-section-head">
+                <div>
+                  <p class="eyebrow">Файл</p>
+                  <h2>rules.json</h2>
+                </div>
+                <span class="meta-chip" data-json-status>Загрузка</span>
+              </div>
+              <div class="admin-grid">
+                <div class="admin-editor-pane">
+                  <textarea class="admin-json-textarea" rows="18" spellcheck="false" data-json-editor></textarea>
+                  <div class="admin-actions">
+                    <button class="button button-primary" type="button" data-copy-json>Скопировать JSON</button>
+                    <button class="button button-secondary" type="button" data-download-json>Скачать JSON</button>
+                    <button class="button button-secondary" type="button" data-reset-json>Сбросить</button>
+                  </div>
+                </div>
+                <div class="admin-preview-grid" data-admin-preview></div>
+              </div>
+            </section>
+
+            <section class="glass-card admin-section reveal" id="admin-constitution" data-json-editor-section="constitution">
+              <div class="admin-section-head">
+                <div>
+                  <p class="eyebrow">Файл</p>
+                  <h2>constitution.json</h2>
+                </div>
+                <span class="meta-chip" data-json-status>Загрузка</span>
+              </div>
+              <div class="admin-grid">
+                <div class="admin-editor-pane">
+                  <textarea class="admin-json-textarea" rows="22" spellcheck="false" data-json-editor></textarea>
+                  <div class="admin-actions">
+                    <button class="button button-primary" type="button" data-copy-json>Скопировать JSON</button>
+                    <button class="button button-secondary" type="button" data-download-json>Скачать JSON</button>
+                    <button class="button button-secondary" type="button" data-reset-json>Сбросить</button>
+                  </div>
+                </div>
+                <div class="admin-preview-grid" data-admin-preview></div>
+              </div>
+            </section>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div class="toast" aria-live="polite" aria-atomic="true"></div>
+  <script src="script.js"></script>
+</body>
+</html>

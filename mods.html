@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Рекомендуемые моды для Minecraft сервера.">
+  <title>Моды | Minecraft Server</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="mods">
+  <div class="page-shell">
+    <header class="site-header compact-header">
+      <div class="container">
+        <div class="nav-shell glass-card">
+          <a class="brand" href="index.html" aria-label="На главную">
+            <span class="brand-mark"></span>
+            <span class="brand-text">
+              <strong data-server-name>Название сервера</strong>
+              <span>Vanilla Minecraft</span>
+            </span>
+          </a>
+
+          <div class="nav-actions">
+            <nav class="site-nav" id="site-navigation" aria-label="Основная навигация">
+              <a href="index.html">Главная</a>
+              <a href="news.html">Новости</a>
+              <a href="rules.html">Правила</a>
+              <a href="events.html">Ивенты</a>
+              <a href="creators.html">Контент-мейкеры</a>
+              <a href="constitution.html">Конституция</a>
+              <a href="mods.html" class="active">Моды</a>
+            </nav>
+            <a class="button support-link support-link-nav" href="index.html#support-block" data-support-link>Поддержать сервер</a>
+          </div>
+
+          <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-main">
+      <section class="page-hero">
+        <div class="container">
+          <div class="glass-card page-hero-card reveal">
+            <p class="eyebrow">Клиентские улучшения</p>
+            <h1>Рекомендуемые моды</h1>
+            <p>Каталог модов собран в виде карточек и загружает данные из <code>data/mods.json</code>.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Каталог</p>
+            <h2>Рекомендованные сборки и моды</h2>
+            <p>Раздел не содержит вымышленных модов по умолчанию. Добавьте только те позиции, которые реально поддерживаются вашим сервером.</p>
+          </div>
+
+          <div class="mods-grid" data-mods-list>
+            <article class="glass-card empty-card reveal">
+              <span class="empty-badge">Пока пусто</span>
+              <h3>Моды ещё не добавлены</h3>
+              <p>Подготовьте реальные названия, изображения, описания и ссылки на скачивание, затем добавьте их в <code>data/mods.json</code>.</p>
+            </article>
+          </div>
+
+          <template id="mod-card-template">
+            <article class="glass-card mod-card reveal">
+              <div class="mod-image-wrap">
+                <img class="mod-image" alt="">
+              </div>
+              <div class="mod-content">
+                <h3></h3>
+                <p></p>
+                <a class="button button-primary download-button" target="_blank" rel="noopener noreferrer">Скачать</a>
+              </div>
+            </article>
+          </template>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-shell glass-card">
+          <p>Каталог модов готов к наполнению и работает через JSON.</p>
+          <div class="footer-links">
+            <a href="index.html">Главная</a>
+            <a href="news.html">Новости</a>
+            <a href="rules.html">Правила</a>
+            <a href="constitution.html">Конституция</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <div class="toast" aria-live="polite" aria-atomic="true"></div>
+  <script src="script.js"></script>
+</body>
+</html>

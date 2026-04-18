@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ивенты Minecraft сервера.">
+  <title>Ивенты | Minecraft Server</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="events">
+  <div class="page-shell">
+    <header class="site-header compact-header">
+      <div class="container">
+        <div class="nav-shell glass-card">
+          <a class="brand" href="index.html" aria-label="На главную">
+            <span class="brand-mark"></span>
+            <span class="brand-text">
+              <strong data-server-name>Название сервера</strong>
+              <span>Vanilla Minecraft</span>
+            </span>
+          </a>
+
+          <div class="nav-actions">
+            <nav class="site-nav" id="site-navigation" aria-label="Основная навигация">
+              <a href="index.html">Главная</a>
+              <a href="news.html">Новости</a>
+              <a href="rules.html">Правила</a>
+              <a href="events.html" class="active">Ивенты</a>
+              <a href="creators.html">Контент-мейкеры</a>
+              <a href="constitution.html">Конституция</a>
+              <a href="mods.html">Моды</a>
+            </nav>
+            <a class="button support-link support-link-nav" href="index.html#support-block" data-support-link>Поддержать сервер</a>
+          </div>
+
+          <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-main">
+      <section class="page-hero">
+        <div class="container">
+          <div class="glass-card page-hero-card reveal">
+            <p class="eyebrow">Раздел</p>
+            <h1>Ивенты</h1>
+            <p>Страница событий оформлена в едином pixel + neon стиле и загружает реальные анонсы из <code>data/events.json</code>.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Календарь</p>
+            <h2>Ближайшие события</h2>
+            <p>Разметка уже подготовлена: у каждого ивента есть название, дата и описание, а данные приходят из JSON.</p>
+          </div>
+
+          <div class="content-grid" data-events-list>
+            <article class="glass-card empty-card reveal">
+              <span class="empty-badge">Нет анонсов</span>
+              <h3>События пока не опубликованы</h3>
+              <p>Как только появятся реальные активности сервера, добавьте их в <code>data/events.json</code>.</p>
+            </article>
+          </div>
+
+          <template id="event-card-template">
+            <article class="glass-card event-card reveal">
+              <div class="card-meta">
+                <span class="meta-chip">Ивент</span>
+                <time></time>
+              </div>
+              <h3></h3>
+              <p></p>
+            </article>
+          </template>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-shell glass-card">
+          <p>Страница ивентов готова к наполнению через JSON без фейкового контента.</p>
+          <div class="footer-links">
+            <a href="index.html">Главная</a>
+            <a href="news.html">Новости</a>
+            <a href="rules.html">Правила</a>
+            <a href="creators.html">Контент-мейкеры</a>
+            <a href="constitution.html">Конституция</a>
+            <a href="mods.html">Моды</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <div class="toast" aria-live="polite" aria-atomic="true"></div>
+  <script src="script.js"></script>
+</body>
+</html>
