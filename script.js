@@ -4,7 +4,7 @@
 
   const STATIC_SITE_META = {
     server: {
-      name: "Название сервера",
+      name: "Varb",
       ip: "play.example.ru"
     },
     support: {
