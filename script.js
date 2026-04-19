@@ -4,7 +4,8 @@
 
   const STATIC_SITE_META = {
     server: {
-      name: "Varb",
+      name: "Название сервера",
+      subtitle: "Vanilla Minecraft",
       ip: "play.example.ru"
     },
     support: {
@@ -14,6 +15,7 @@
   };
 
   const DATA_FILES = {
+    site: "data/site.json",
     banners: "data/banners.json",
     news: "data/news.json",
     creators: "data/creators.json",
@@ -49,14 +51,29 @@
     }).format(date);
   };
 
-  const safeText = (value, fallback = "") => String(value || fallback);
+  const safeText = (value, fallback = "") => String(value ?? fallback);
 
-  const applyServerMeta = () => {
-    const serverName = STATIC_SITE_META.server.name.trim();
-    const serverIp = STATIC_SITE_META.server.ip.trim();
+  const getByPath = (source, path) => {
+    if (!source || !path) return undefined;
+
+    return path.split(".").reduce((value, key) => {
+      if (value == null) return undefined;
+      return value[key];
+    }, source);
+  };
+
+  const applyServerMeta = (siteConfig = {}) => {
+    const server = siteConfig.server || STATIC_SITE_META.server;
+    const serverName = safeText(server.name, STATIC_SITE_META.server.name).trim();
+    const serverSubtitle = safeText(server.subtitle, STATIC_SITE_META.server.subtitle).trim();
+    const serverIp = safeText(server.ip, STATIC_SITE_META.server.ip).trim();
 
     document.querySelectorAll("[data-server-name]").forEach((node) => {
       node.textContent = serverName;
+    });
+
+    document.querySelectorAll("[data-server-subtitle]").forEach((node) => {
+      node.textContent = serverSubtitle;
     });
 
     if (document.title.includes("Minecraft Server")) {
@@ -72,9 +89,10 @@
     }
   };
 
-  const applySupportMeta = () => {
-    const supportUrl = STATIC_SITE_META.support.url.trim();
-    const supportLabel = STATIC_SITE_META.support.label.trim() || "Поддержать сервер";
+  const applySupportMeta = (siteConfig = {}) => {
+    const support = siteConfig.support || STATIC_SITE_META.support;
+    const supportUrl = safeText(support.url, STATIC_SITE_META.support.url).trim();
+    const supportLabel = safeText(support.label, STATIC_SITE_META.support.label).trim() || "Поддержать сервер";
 
     document.querySelectorAll("[data-support-link]").forEach((link) => {
       link.textContent = supportLabel;
@@ -83,6 +101,18 @@
       if (/^https?:\/\//i.test(supportUrl)) {
         link.setAttribute("target", "_blank");
         link.setAttribute("rel", "noopener noreferrer");
+      } else {
+        link.removeAttribute("target");
+        link.removeAttribute("rel");
+      }
+    });
+  };
+
+  const applySiteTexts = (siteConfig = {}) => {
+    document.querySelectorAll("[data-site-text]").forEach((node) => {
+      const value = getByPath(siteConfig, node.dataset.siteText);
+      if (typeof value === "string") {
+        node.textContent = value;
       }
     });
   };
@@ -361,6 +391,33 @@
   const renderAdminPreview = (type, data, container) => {
     if (!container) return;
 
+    if (type === "site") {
+      const serverName = safeText(getByPath(data, "server.name"), "Название сервера");
+      const homeTitle = safeText(getByPath(data, "home.navigation.title"), "Разделы проекта");
+      const supportTitle = safeText(getByPath(data, "support.section.title"), "Поддержать сервер");
+      const newsTitle = safeText(getByPath(data, "pages.news.heroTitle"), "Новости");
+
+      container.innerHTML = `
+        <article class="glass-card feature-card">
+          <h3>${serverName}</h3>
+          <p>${safeText(getByPath(data, "home.hero.text"))}</p>
+        </article>
+        <article class="glass-card feature-card">
+          <h3>${homeTitle}</h3>
+          <p>${safeText(getByPath(data, "home.navigation.text"))}</p>
+        </article>
+        <article class="glass-card feature-card">
+          <h3>${supportTitle}</h3>
+          <p>${safeText(getByPath(data, "support.section.text"))}</p>
+        </article>
+        <article class="glass-card feature-card">
+          <h3>${newsTitle}</h3>
+          <p>${safeText(getByPath(data, "pages.news.heroText"))}</p>
+        </article>
+      `;
+      return;
+    }
+
     if (type === "constitution") {
       const articles = Array.isArray(data.articles) ? data.articles : [];
       container.innerHTML = articles.map((article) => {
@@ -495,7 +552,7 @@
     });
   };
 
-  const setupAdminPanel = async () => {
+  const setupAdminPanel = async (siteConfig) => {
     if (body.dataset.page !== "admin") return;
 
     const lockPanel = document.querySelector("[data-admin-lock]");
@@ -525,7 +582,10 @@
     const editorSections = document.querySelectorAll("[data-json-editor-section]");
     if (!editorSections.length) return;
 
-    const bundle = await loadDataBundle(["news", "banners", "creators", "mods", "events", "rules", "constitution"]);
+    const bundle = await loadDataBundle(["site", "news", "banners", "creators", "mods", "events", "rules", "constitution"]);
+    if (!bundle.site) {
+      bundle.site = siteConfig;
+    }
 
     editorSections.forEach((section) => {
       const key = section.dataset.jsonEditorSection;
@@ -602,6 +662,13 @@
     const page = body.dataset.page;
 
     try {
+      const siteBundle = await loadDataBundle(["site"]);
+      const siteConfig = siteBundle.site || {};
+
+      applyServerMeta(siteConfig);
+      applySupportMeta(siteConfig);
+      applySiteTexts(siteConfig);
+
       if (page === "home") {
         renderHomePage(await loadDataBundle(["banners"]));
       }
@@ -631,7 +698,7 @@
       }
 
       if (page === "admin") {
-        await setupAdminPanel();
+        await setupAdminPanel(siteConfig);
       }
     } catch (error) {
       showToast("Не удалось загрузить JSON. Проверьте папку data.");
@@ -639,8 +706,6 @@
     }
   };
 
-  applyServerMeta();
-  applySupportMeta();
   setupCopyButton();
   setupMobileNavigation();
   setupRevealAnimation();
