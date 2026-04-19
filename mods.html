@@ -16,7 +16,7 @@
             <span class="brand-mark"></span>
             <span class="brand-text">
               <strong data-server-name>Название сервера</strong>
-              <span>Vanilla Minecraft</span>
+              <span data-server-subtitle>Vanilla Minecraft</span>
             </span>
           </a>
 
@@ -46,9 +46,9 @@
       <section class="page-hero">
         <div class="container">
           <div class="glass-card page-hero-card reveal">
-            <p class="eyebrow">Клиентские улучшения</p>
-            <h1>Рекомендуемые моды</h1>
-            <p>Каталог модов собран в виде карточек и загружает данные из <code>data/mods.json</code>.</p>
+            <p class="eyebrow" data-site-text="pages.mods.heroEyebrow">Клиентские улучшения</p>
+            <h1 data-site-text="pages.mods.heroTitle">Рекомендуемые моды</h1>
+            <p data-site-text="pages.mods.heroText">Каталог модов собран в виде карточек и помогает аккуратно рекомендовать улучшения для клиента.</p>
           </div>
         </div>
       </section>
@@ -56,16 +56,16 @@
       <section class="section">
         <div class="container">
           <div class="section-heading reveal">
-            <p class="eyebrow">Каталог</p>
-            <h2>Рекомендованные сборки и моды</h2>
-            <p>Раздел не содержит вымышленных модов по умолчанию. Добавьте только те позиции, которые реально поддерживаются вашим сервером.</p>
+            <p class="eyebrow" data-site-text="pages.mods.sectionEyebrow">Каталог</p>
+            <h2 data-site-text="pages.mods.sectionTitle">Рекомендованные сборки и моды</h2>
+            <p data-site-text="pages.mods.sectionText">Раздел не содержит вымышленных модов по умолчанию. Добавьте только те позиции, которые реально поддерживаются вашим сервером.</p>
           </div>
 
           <div class="mods-grid" data-mods-list>
             <article class="glass-card empty-card reveal">
-              <span class="empty-badge">Пока пусто</span>
-              <h3>Моды ещё не добавлены</h3>
-              <p>Подготовьте реальные названия, изображения, описания и ссылки на скачивание, затем добавьте их в <code>data/mods.json</code>.</p>
+              <span class="empty-badge" data-site-text="pages.mods.emptyBadge">Пока пусто</span>
+              <h3 data-site-text="pages.mods.emptyTitle">Моды ещё не добавлены</h3>
+              <p data-site-text="pages.mods.emptyText">Подготовьте реальные названия, изображения, описания и ссылки на скачивание, и они появятся в каталоге.</p>
             </article>
           </div>
 
@@ -88,7 +88,7 @@
     <footer class="site-footer">
       <div class="container">
         <div class="footer-shell glass-card">
-          <p>Каталог модов готов к наполнению и работает через JSON.</p>
+          <p data-site-text="pages.mods.footer">Каталог модов готов к наполнению и публикации.</p>
           <div class="footer-links">
             <a href="index.html">Главная</a>
             <a href="news.html">Новости</a>
