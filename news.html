@@ -16,7 +16,7 @@
             <span class="brand-mark"></span>
             <span class="brand-text">
               <strong data-server-name>Название сервера</strong>
-              <span>Vanilla Minecraft</span>
+              <span data-server-subtitle>Vanilla Minecraft</span>
             </span>
           </a>
 
@@ -46,9 +46,9 @@
       <section class="page-hero">
         <div class="container">
           <div class="glass-card page-hero-card reveal">
-            <p class="eyebrow">Раздел</p>
-            <h1>Новости</h1>
-            <p>Пиксельная лента новостей с карточками и простой структурой для наполнения через <code>data/news.json</code>.</p>
+            <p class="eyebrow" data-site-text="pages.news.heroEyebrow">Раздел</p>
+            <h1 data-site-text="pages.news.heroTitle">Новости</h1>
+            <p data-site-text="pages.news.heroText">Пиксельная лента новостей с карточками и простой структурой для публикации важных обновлений сервера.</p>
           </div>
         </div>
       </section>
@@ -56,16 +56,16 @@
       <section class="section">
         <div class="container">
           <div class="section-heading reveal">
-            <p class="eyebrow">Лента</p>
-            <h2>Последние публикации</h2>
-            <p>Добавляйте реальные анонсы в <code>data/news.json</code>, а страница подгрузит их автоматически через JavaScript.</p>
+            <p class="eyebrow" data-site-text="pages.news.sectionEyebrow">Лента</p>
+            <h2 data-site-text="pages.news.sectionTitle">Последние публикации</h2>
+            <p data-site-text="pages.news.sectionText">Добавляйте реальные анонсы, и страница подгрузит их автоматически через JavaScript.</p>
           </div>
 
           <div class="content-grid" data-news-list>
             <article class="glass-card empty-card reveal">
-              <span class="empty-badge">Нет публикаций</span>
-              <h3>Новости ещё не добавлены</h3>
-              <p>Раздел уже оформлен и ждёт настоящих обновлений проекта из JSON-файла.</p>
+              <span class="empty-badge" data-site-text="pages.news.emptyBadge">Нет публикаций</span>
+              <h3 data-site-text="pages.news.emptyTitle">Новости ещё не добавлены</h3>
+              <p data-site-text="pages.news.emptyText">Раздел уже оформлен и ждёт настоящих обновлений проекта.</p>
             </article>
           </div>
 
@@ -91,7 +91,7 @@
     <footer class="site-footer">
       <div class="container">
         <div class="footer-shell glass-card">
-          <p>Раздел новостей работает со статическим наполнением через JSON.</p>
+          <p data-site-text="pages.news.footer">Раздел новостей готов к аккуратному наполнению и публикации обновлений.</p>
           <div class="footer-links">
             <a href="index.html">Главная</a>
             <a href="rules.html">Правила</a>
