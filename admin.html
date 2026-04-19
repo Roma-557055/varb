@@ -51,6 +51,7 @@
           <aside class="admin-sidebar glass-card reveal">
             <h2>JSON-файлы</h2>
             <nav class="admin-nav">
+              <a href="#admin-site">Настройки сайта</a>
               <a href="#admin-news">Новости</a>
               <a href="#admin-banners">Баннеры</a>
               <a href="#admin-events">Ивенты</a>
@@ -66,6 +67,27 @@
           </aside>
 
           <div class="admin-content">
+            <section class="glass-card admin-section reveal" id="admin-site" data-json-editor-section="site">
+              <div class="admin-section-head">
+                <div>
+                  <p class="eyebrow">Файл</p>
+                  <h2>site.json</h2>
+                </div>
+                <span class="meta-chip" data-json-status>Загрузка</span>
+              </div>
+              <div class="admin-grid">
+                <div class="admin-editor-pane">
+                  <textarea class="admin-json-textarea" rows="24" spellcheck="false" data-json-editor></textarea>
+                  <div class="admin-actions">
+                    <button class="button button-primary" type="button" data-copy-json>Скопировать JSON</button>
+                    <button class="button button-secondary" type="button" data-download-json>Скачать JSON</button>
+                    <button class="button button-secondary" type="button" data-reset-json>Сбросить</button>
+                  </div>
+                </div>
+                <div class="admin-preview-grid" data-admin-preview></div>
+              </div>
+            </section>
+
             <section class="glass-card admin-section reveal" id="admin-news" data-json-editor-section="news">
               <div class="admin-section-head">
                 <div>
